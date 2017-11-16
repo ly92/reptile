@@ -10,9 +10,9 @@
 
 @software: garner
 
-@file: test.py
+@file: test4.py
 
-@time: 2017/11/15 14:56
+@time: 2017/11/16 11:13
 
 @desc:
 
@@ -54,7 +54,7 @@ class BeautifulPicture():
     def request(self,url):
         driver = webdriver.PhantomJS()
         driver.get(url)
-        #self.click_more(driver,5)
+        self.click_more(driver,5)
         return driver.page_source
 
     def click_more(self,driver,times):
@@ -120,7 +120,6 @@ class BeautifulPicture():
         name = nameStr.text.strip() + suffix
 
         return img_url,name
-
 
 beauty = BeautifulPicture()
 beauty.get_pic()
