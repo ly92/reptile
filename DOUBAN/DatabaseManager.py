@@ -116,9 +116,10 @@ class OperationDbInterface(object):
         finally:
             return results
 
-    def insert_item(self,rank,video_name,other_name,director,show_year,nationality,video_sort,grade,star_level,valuator_num,shot_intro,intro_link,intro):
-        sql = "insert into videos(rank,video_name,other_name,director,show_year,nationality,video_sort,grade,star_level,valuator_num,shot_intro,intro_link,intro) values(%d,'%s','%s','%s',%d,'%s','%s',%d,%.1f,%d,'%s','%s','%s')" %(rank,video_name,other_name,director,show_year,nationality,video_sort,grade,star_level,valuator_num,shot_intro,intro_link,intro)
-        print(sql)
+    def insert_item(self,rank,video_name,other_name,director,show_year,nationality,video_sort,grade,
+                    valuator_num,shot_intro,intro_link,intro,playable,actor):
+        sql = '''insert into videos_copy(rank,video_name,other_name,director,show_year,nationality,video_sort,grade,valuator_num,shot_intro,intro_link,intro,playable,actor) values(%d,"%s","%s","%s",%d,"%s","%s",%.1f,%d,"%s","%s","%s",%d,"%s")'''%(rank,video_name,other_name,director,show_year,nationality,video_sort,grade,valuator_num,shot_intro,intro_link,intro,playable,actor)
+        # print(sql)
         return self.op_sql(sql)
 
 
@@ -131,8 +132,4 @@ class OperationDbInterface(object):
 # print(result_2)
 # result = test.insert_item(1,"2","3","4",5,"6","7",8,8.5,9,"10","11")
 # print(result)
-
-
-
-
 
