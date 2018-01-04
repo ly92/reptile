@@ -42,8 +42,8 @@ from selenium.webdriver.common.keys import Keys
 from JianShu.DatabaseManager import Operation
 
 class JianShuList():
-    def __init__(self):
-        self.dataManager = Operation()
+    # def __init__(self):
+        # self.dataManager = Operation()
 
     def request(self, url):
         driver = webdriver.PhantomJS()
@@ -53,13 +53,34 @@ class JianShuList():
     #提取博客标题和短内容
     def operationBlog(self):
         source = self.request('https://www.jianshu.com/u/82854a3500fc')
+
+        #分离出作者
+        main_top = BeautifulSoup(source, 'lxml').find('div', class_='main-top')
+        title_div = BeautifulSoup(str(main_top), 'lxml').find('div', class_='title')
+        author = BeautifulSoup(str(title_div), 'lxml').find('a', class_='name').text.strip()
+        print(author)
+
+
+        #分理出博客
         content_list = BeautifulSoup(source, 'lxml').find('div', id='list-container')
         ul_list = BeautifulSoup(str(content_list), 'lxml').find('ul', class_='note-list')
         all_lis = BeautifulSoup(str(ul_list), 'lxml').find_all('li')
         for li in all_lis:
             name = BeautifulSoup(str(li), 'lxml').find('a', class_='title').text.strip()
             detail = BeautifulSoup(str(li), 'lxml').find('p', class_='abstract').text.strip()
-            self.dataManager.insert_item(name,detail)
+            meta = BeautifulSoup(str(li), 'lxml').find('div', class_='meta')
+            all_a = BeautifulSoup(str(meta), 'lxml').find_all('a', target='_blank')
+            read_num = all_a[0].text.strip()
+            comment_num = all_a[1].text.strip()
+            span = BeautifulSoup(str(meta), 'lxml').find('span')
+            like_num = span.text.strip()
+            print(name)
+            print(detail)
+            print(read_num)
+            print(comment_num)
+            print(like_num)
+            print('-------')
+            # self.dataManager.insert_item(name,detail)
 
     #获取作者ID
     # def getAuthorId(self):
@@ -67,7 +88,7 @@ class JianShuList():
 
 
 jianshu = JianShuList()
-jianshu.getAuthorId()
+jianshu.operationBlog()
 
 '''
 https://www.jianshu.com/users/82854a3500fc
