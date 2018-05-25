@@ -42,8 +42,12 @@ class Operation(object):
             print('MySql Error %d:%s' % (e.args[0], e.args[1]))
         return False
 
-    def insert_item(self,blog_name, blog_detail):
-        sql = "insert into Blogs_blog(blog_name,blog_detail) values('%s','%s')" % (blog_name,blog_detail)
+    def insert_Blog_item(self,blog_name, blog_detail,like,comment,see,author_id):
+        sql = "insert into Blogs_blog(blog_name,blog_detail,see_num,comment_num,like_num,author_id) values('%s','%s',%d,%d,%d,%d)" % (blog_name,blog_detail,see,comment,like,author_id)
         print(sql)
         return self.op_sql(sql)
 
+    def insert_Author_item(self,name, atten, like,id):
+        sql = "insert into Author_author(author_name,attention_num,like_num,author_id) values('%s',%d,%d,%d)" % (name,atten,like,id)
+        print(sql)
+        return self.op_sql(sql)
