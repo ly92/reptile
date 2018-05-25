@@ -95,9 +95,26 @@ class OperationDbInterface(object):
             return results
 
     def insert_item(self,goods_name,goods_id):
-        sql = '''insert into goods_list(goods_name,goods_id) values("%s",%d)'''%(goods_name,goods_id)
+        sql = '''insert into real_goods_list(goods_name,goods_id) values("%s",%d)'''%(goods_name,goods_id)
         # print(sql)
         return self.op_sql(sql)
+
+    # 查询表中所有数据
+    def select_all(self, condition):
+        try:
+            self.cur.execute(condition)
+            self.cur.scroll(0, mode='absolute')  # 光标回到初始位置
+            results = self.cur.fetchall()  # 返回游标中所有结果
+        except pymysql.Error as e:
+            results = 'sql0001'  # 数据库执行失败
+            print("MySQL Error %d: %s" % (e.args[0], e.args[1]))
+            logging.basicConfig(filename=os.path.join(os.getcwd(), './log.txt'),
+                                level=logging.DEBUG,
+                                format='%(asctime)s %(filename)s[line:%(lineno)d] %(levelname)s %(message)s')
+            logger = logging.getLogger(__name__)
+            logger.exception(e)
+        finally:
+            return results
 
 
 
