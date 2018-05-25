@@ -37,11 +37,13 @@ class GoodsList():
         contentDiv = BeautifulSoup(source, 'lxml').find('div', class_='productcontent')
         all_lis = BeautifulSoup(str(contentDiv), 'lxml').find_all('li')
         for li in all_lis:
-            # print(li)
             a = BeautifulSoup(str(li), 'lxml').find('a', class_='a_hui')
-            name = a.text.strip()
-            goodsId = a.href
-            print(a)
+            name = str(a.get('title')).strip()
+            goodsId = str(a.get('href')).replace('productlist.php?pid=','').strip()
+            print(name)
+            print(goodsId)
+            print('-----------------------------')
+
             # print(name)
             # print(goodsId)
 
