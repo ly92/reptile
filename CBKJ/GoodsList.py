@@ -23,9 +23,13 @@ import lxml
 from bs4 import BeautifulSoup
 from selenium import webdriver
 from selenium.webdriver.common.keys import Keys
+from DatabaseManager import OperationDbInterface
 
 
 class GoodsList():
+    def __init(self):
+        self.dataManager = OperationDbInterface()
+
     def request(self, url):
         driver = webdriver.PhantomJS()
         driver.get(url)
@@ -40,12 +44,12 @@ class GoodsList():
             a = BeautifulSoup(str(li), 'lxml').find('a', class_='a_hui')
             name = str(a.get('title')).strip()
             goodsId = str(a.get('href')).replace('productlist.php?pid=','').strip()
-            print(name)
-            print(goodsId)
-            print('-----------------------------')
-
             # print(name)
             # print(goodsId)
+            # print('-----------------------------')
+
+            result = self.dataManager.insert_item(name,int(goodsId))
+            print(result)
 
 
 
