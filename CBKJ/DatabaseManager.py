@@ -95,7 +95,7 @@ class OperationDbInterface(object):
             return results
 
     def insert_item(self,goods_name,goods_id):
-        sql = '''insert into videos_copy(goods_name,goods_id) values("%s",%d)'''%(goods_name,goods_id)
+        sql = '''insert into goods_list(goods_name,goods_id) values("%s",%d)'''%(goods_name,goods_id)
         # print(sql)
         return self.op_sql(sql)
 

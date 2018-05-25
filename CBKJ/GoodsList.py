@@ -27,7 +27,7 @@ from DatabaseManager import OperationDbInterface
 
 
 class GoodsList():
-    def __init(self):
+    def __init__(self):
         self.dataManager = OperationDbInterface()
 
     def request(self, url):
