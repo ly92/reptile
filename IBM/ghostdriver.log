@@ -1,0 +1,12 @@
+[INFO  - 2018-06-13T03:09:05.379Z] GhostDriver - Main - running on port 53902
+[INFO  - 2018-06-13T03:09:05.990Z] Session [21cb9220-6eb7-11e8-bbce-97ae00adb63a] - page.settings - {"XSSAuditingEnabled":false,"javascriptCanCloseWindows":true,"javascriptCanOpenWindows":true,"javascriptEnabled":true,"loadImages":true,"localToRemoteUrlAccessEnabled":false,"userAgent":"Mozilla/5.0 (Macintosh; Intel Mac OS X) AppleWebKit/538.1 (KHTML, like Gecko) PhantomJS/2.1.1 Safari/538.1","webSecurityEnabled":true}
+[INFO  - 2018-06-13T03:09:05.990Z] Session [21cb9220-6eb7-11e8-bbce-97ae00adb63a] - page.customHeaders:  - {}
+[INFO  - 2018-06-13T03:09:05.990Z] Session [21cb9220-6eb7-11e8-bbce-97ae00adb63a] - Session.negotiatedCapabilities - {"browserName":"phantomjs","version":"2.1.1","driverName":"ghostdriver","driverVersion":"1.2.0","platform":"mac-unknown-64bit","javascriptEnabled":true,"takesScreenshot":true,"handlesAlerts":false,"databaseEnabled":false,"locationContextEnabled":false,"applicationCacheEnabled":false,"browserConnectionEnabled":false,"cssSelectorsEnabled":true,"webStorageEnabled":false,"rotatable":false,"acceptSslCerts":false,"nativeEvents":true,"proxy":{"proxyType":"direct"}}
+[INFO  - 2018-06-13T03:09:05.990Z] SessionManagerReqHand - _postNewSessionCommand - New Session Created: 21cb9220-6eb7-11e8-bbce-97ae00adb63a
+[ERROR - 2018-06-13T03:09:10.622Z] Session [21cb9220-6eb7-11e8-bbce-97ae00adb63a] - page.onError - msg: v18: Error calling SWWIF service: https://www.ibm.com/gateway/secstate/?cc=us&lc=en&format=json&ts=1528859348154&v=17&wtmcategory=ELSKCS&cb=206%3AIBMCore.www.module.dynamiccontactmodule.contactboxcallback
+
+  phantomjs://platform/console++.js:263 in error
+[ERROR - 2018-06-13T03:09:10.622Z] Session [21cb9220-6eb7-11e8-bbce-97ae00adb63a] - page.onError - stack:
+  error (https://1.www.s81c.com/common/v18/r115/js/www.js?v=20180528_0735:32)
+
+  phantomjs://platform/console++.js:263 in error

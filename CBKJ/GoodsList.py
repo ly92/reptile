@@ -53,22 +53,24 @@ class GoodsList():
             # print(result)
 
             secrchArr = self.dataManager.select_all('select goods_id from real_goods_list')
-            # if secrchArr.__contains__({'goods_id': int(goodsId)}) is False:
-            #     result = self.dataManager.insert_item(name, int(goodsId))
-            #     print(result)
-            if secrchArr.__contains__({'goods_id': int(goodsId)}):
-                print(goodsId)
-                return
-            else:
+            if secrchArr.__contains__({'goods_id': int(goodsId)}) is False:
                 result = self.dataManager.insert_item(name, int(goodsId))
                 print(result)
+            # if secrchArr.__contains__({'goods_id': int(goodsId)}):
+            #     print(goodsId)
+            #     return
+            # else:
+            #     result = self.dataManager.insert_item(name, int(goodsId))
+            #     print(result)
 
 
     def allGoodsList(self):#291~1434未获取
-        for i in range(1435,1441):
-            url = "http://www.tradeunix.com/product.php?page=%d&cid=&fid=&bid=&keywords=&search_sna=&search_name="%(i)
-            self.operationGoods(url)
+        for i in range(1,3):
+            print(i)
+            url = "http://www.tradeunix.com/product.php?page=%d&cid=1&fid=1&bid=&keywords=&search_sna=&search_name="%(i)
             print(url)
+            self.operationGoods(url)
+
             # sleep(2)
 
     # 去重
@@ -89,3 +91,6 @@ list = GoodsList()
 # list.operationGoods()
 list.allGoodsList()
 # list.removeRepetition()
+
+
+# http://www.tradeunix.com/product.php?page=2&cid=1&fid=1&bid=&keywords=&search_sna=&search_name=
