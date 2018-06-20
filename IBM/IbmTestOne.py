@@ -77,7 +77,7 @@ class ImbData():
                     four += str(div.text).strip()
             sql = '''insert into ibmOne(one,two,three,four) values("%s","%s","%s","%s")''' % (one, two, three, four)
             print(sql)
-            self.dataManager.op_sql(sql)
+            # self.dataManager.op_sql(sql)
 
 
     def allGoodsList(self):
