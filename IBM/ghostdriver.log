@@ -1,12 +1,5 @@
-[INFO  - 2018-06-20T08:29:28.516Z] GhostDriver - Main - running on port 54173
-[INFO  - 2018-06-20T08:29:29.501Z] Session [0cca0d40-7464-11e8-bc60-e5d1181a8395] - page.settings - {"XSSAuditingEnabled":false,"javascriptCanCloseWindows":true,"javascriptCanOpenWindows":true,"javascriptEnabled":true,"loadImages":true,"localToRemoteUrlAccessEnabled":false,"userAgent":"Mozilla/5.0 (Macintosh; Intel Mac OS X) AppleWebKit/538.1 (KHTML, like Gecko) PhantomJS/2.1.1 Safari/538.1","webSecurityEnabled":true}
-[INFO  - 2018-06-20T08:29:29.501Z] Session [0cca0d40-7464-11e8-bc60-e5d1181a8395] - page.customHeaders:  - {}
-[INFO  - 2018-06-20T08:29:29.501Z] Session [0cca0d40-7464-11e8-bc60-e5d1181a8395] - Session.negotiatedCapabilities - {"browserName":"phantomjs","version":"2.1.1","driverName":"ghostdriver","driverVersion":"1.2.0","platform":"mac-unknown-64bit","javascriptEnabled":true,"takesScreenshot":true,"handlesAlerts":false,"databaseEnabled":false,"locationContextEnabled":false,"applicationCacheEnabled":false,"browserConnectionEnabled":false,"cssSelectorsEnabled":true,"webStorageEnabled":false,"rotatable":false,"acceptSslCerts":false,"nativeEvents":true,"proxy":{"proxyType":"direct"}}
-[INFO  - 2018-06-20T08:29:29.501Z] SessionManagerReqHand - _postNewSessionCommand - New Session Created: 0cca0d40-7464-11e8-bc60-e5d1181a8395
-[ERROR - 2018-06-20T08:29:32.329Z] Session [0cca0d40-7464-11e8-bc60-e5d1181a8395] - page.onError - msg: v18: Error calling SWWIF service: https://www.ibm.com/gateway/secstate/?cc=us&lc=en&format=json&ts=1529483370803&v=17&wtmcategory=ELSKCS&cb=206%3AIBMCore.www.module.dynamiccontactmodule.contactboxcallback
-
-  phantomjs://platform/console++.js:263 in error
-[ERROR - 2018-06-20T08:29:32.329Z] Session [0cca0d40-7464-11e8-bc60-e5d1181a8395] - page.onError - stack:
-  error (https://1.www.s81c.com/common/v18/r115/js/www.js?v=20180528_0735:32)
-
-  phantomjs://platform/console++.js:263 in error
+[INFO  - 2018-06-29T05:33:05.971Z] GhostDriver - Main - running on port 55840
+[INFO  - 2018-06-29T05:33:06.730Z] Session [e6afdc60-7b5d-11e8-97f7-fd5ce0ead7c1] - page.settings - {"XSSAuditingEnabled":false,"javascriptCanCloseWindows":true,"javascriptCanOpenWindows":true,"javascriptEnabled":true,"loadImages":true,"localToRemoteUrlAccessEnabled":false,"userAgent":"Mozilla/5.0 (Macintosh; Intel Mac OS X) AppleWebKit/538.1 (KHTML, like Gecko) PhantomJS/2.1.1 Safari/538.1","webSecurityEnabled":true}
+[INFO  - 2018-06-29T05:33:06.730Z] Session [e6afdc60-7b5d-11e8-97f7-fd5ce0ead7c1] - page.customHeaders:  - {}
+[INFO  - 2018-06-29T05:33:06.730Z] Session [e6afdc60-7b5d-11e8-97f7-fd5ce0ead7c1] - Session.negotiatedCapabilities - {"browserName":"phantomjs","version":"2.1.1","driverName":"ghostdriver","driverVersion":"1.2.0","platform":"mac-unknown-64bit","javascriptEnabled":true,"takesScreenshot":true,"handlesAlerts":false,"databaseEnabled":false,"locationContextEnabled":false,"applicationCacheEnabled":false,"browserConnectionEnabled":false,"cssSelectorsEnabled":true,"webStorageEnabled":false,"rotatable":false,"acceptSslCerts":false,"nativeEvents":true,"proxy":{"proxyType":"direct"}}
+[INFO  - 2018-06-29T05:33:06.730Z] SessionManagerReqHand - _postNewSessionCommand - New Session Created: e6afdc60-7b5d-11e8-97f7-fd5ce0ead7c1
