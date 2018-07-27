@@ -39,7 +39,7 @@ class OperationDbInterface(object):
         self.conn = pymysql.connect(host='localhost',
                                     user='root',
                                     password='11111111',
-                                    db='reptile',
+                                    db='NeverGu',
                                     port=3306,
                                     charset='utf8',
                                     cursorclass=pymysql.cursors.DictCursor) # 创建数据库连接
@@ -98,16 +98,4 @@ class OperationDbInterface(object):
         sql = '''insert into goods_list_copy(goods_name,goods_id) values("%s",%d)'''%(goods_name,goods_id)
         print(sql)
         return self.op_sql(sql)
-
-
-
-
-
-# test = OperationDbInterface() # 实例化类
-# # result_1 = test.select_one('select*from D_COM_RG_PERN') # 查询一条数据
-# # print(result_1)
-# result_2 = test.select_all('select*from videos') # 查询所有数据
-# print(result_2)
-# result = test.insert_item(1,"2","3","4",5,"6","7",8,8.5,9,"10","11")
-# print(result)
 
