@@ -69,7 +69,13 @@ for url in urlPaths:
     brand_id = indexs[1]
     machine.operationGoods(sss, int(brand_id), int(type_id))
 
-
-
-
-
+#
+# for ss in ['HP','IBM','SUN']:
+#     sql = '''insert into qxf_kfbrand(brand_name) values("%s")''' % (ss)
+#     print(sql)
+#     machine.dataManager.op_sql(sql)
+#
+# for ss in ['小型机','PC服务器','存储整机','磁带库','NAS','SAN','刀片服务器']:
+#     sql = '''insert into qxf_kfmachinetype(type_name) values("%s")''' % (ss)
+#     print(sql)
+#     machine.dataManager.op_sql(sql)

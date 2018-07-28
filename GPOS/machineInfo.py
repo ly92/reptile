@@ -24,7 +24,8 @@ import requests
 import lxml
 from bs4 import BeautifulSoup
 from selenium import webdriver
-from selenium.webdriver.common.keys import Keys
+from selenium.webdriver import Firefox
+from selenium.webdriver.firefox.options import Options
 from DatabaseManager import OperationDbInterface
 from time import sleep
 import re
@@ -35,9 +36,12 @@ class MachineInfo():
         self.dataManager = OperationDbInterface()
 
     def operationGoods(self,url,machine_id):
-        driver = webdriver.PhantomJS()
+        options = Options()
+        options.add_argument('-headless')
+        driver = Firefox(executable_path='/usr/local/bin/geckodriver', firefox_options=options)
         driver.get(url)
         source = driver.page_source
+        driver.close()
 
         #整机
         info_name = ''
@@ -49,10 +53,20 @@ class MachineInfo():
         parts_pn = ''
         parts_desc = ''
         parts_url = ''
+        print(source)
 
-        body_div = BeautifulSoup(str(source),'lxml').find('div',id='body')
-        content_div = BeautifulSoup(str(body_div),'lxml').find('div', class_='prodDetails')
+        tedi = BeautifulSoup(str(source),'lxml').find('div',class_='aspNetHidden')
+        # print(tedi)
+
+        # body_div = BeautifulSoup(str(source),'lxml').find('div',id='body')
+        # print(body_div)
+        # content_div = BeautifulSoup(str(body_div),'lxml').find('div', class_='prodDetails')
+        # print('-----')
+        # print(content_div)
+        # print('-----------')
+        return
         tables = BeautifulSoup(str(content_div),'lxml').find_all('table', class_='ptmtb')
+
         machine_table = tables[0]
         machine_tbody = BeautifulSoup(str(machine_table),'lxml').find('tbody')
         mac_trs = BeautifulSoup(str(machine_tbody),'lxml').find_all('tr')
@@ -126,4 +140,4 @@ for machine in machines:
     print(url)
     print(machine_id)
     info.operationGoods(url,machine_id)
-    break
+    # break
