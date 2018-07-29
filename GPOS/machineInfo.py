@@ -53,19 +53,27 @@ class MachineInfo():
         parts_pn = ''
         parts_desc = ''
         parts_url = ''
-        print(source)
+        # print(source)
 
-        tedi = BeautifulSoup(str(source),'lxml').find('div',class_='aspNetHidden')
-        # print(tedi)
+        index1 = source.index('<div id="contentPH_prodDetails" class="prodDetails">')
+        index2 = source.index('<div id="foot">')
+        source = source[index1:index2]
 
+        # source = source.replace('><','>\n<')
+        # print(source)
+        # return
+        # a = BeautifulSoup(str(source), 'lxml').find('div',id='nav')
+        # # formStr = BeautifulSoup(str(source),'lxml').find('div',id='nav')
+        # print(a)
+        #
         # body_div = BeautifulSoup(str(source),'lxml').find('div',id='body')
         # print(body_div)
         # content_div = BeautifulSoup(str(body_div),'lxml').find('div', class_='prodDetails')
         # print('-----')
         # print(content_div)
         # print('-----------')
-        return
-        tables = BeautifulSoup(str(content_div),'lxml').find_all('table', class_='ptmtb')
+        # return
+        tables = BeautifulSoup(str(source),'lxml').find_all('table', class_='ptmtb')
 
         machine_table = tables[0]
         machine_tbody = BeautifulSoup(str(machine_table),'lxml').find('tbody')
@@ -77,15 +85,21 @@ class MachineInfo():
 
             tds = BeautifulSoup(str(tr),'lxml').find_all('td')
             if len(tds) == 2:
-                info_name = str(tds[0].text).strip()
-                info_desc = str(tds[1].text).strip()
+                info_name = str(tds[0].text).strip().replace('\"',' ')
+                info_desc = str(tds[1].text).strip().replace('\"',' ')
             else:
                 info_name = '整机信息'
 
-            print('-------------------------------------------------------------------------')
+            # print('-------------------------------------------------------------------------')
             machine_sql = '''insert into qxf_kfmachineinfo(machine_id,info_name,info_desc) values(%d,"%s","%s")''' % (
             machine_id, info_name, info_desc)
-            print(machine_sql)
+            result1 = self.dataManager.op_sql(machine_sql)
+            if result1:
+                print('true' + str(machine_id))
+            else:
+                print('-------------------------------------------------------------------------')
+                print(machine_sql)
+                print('false' + str(machine_id))
 
         parts_table = tables[1]
         parts_tbody = BeautifulSoup(str(parts_table), 'lxml').find('tbody')
@@ -101,31 +115,37 @@ class MachineInfo():
 
             tds = BeautifulSoup(str(tr), 'lxml').find_all('td')
             if len(tds) == 1:
-                parts_name = str(tds[0].text).strip()
+                parts_name = str(tds[0].text).strip().replace('\"',' ')
             elif len(tds) == 3:
                 index = 1
                 for td in tds:
                     a = BeautifulSoup(str(td), 'lxml').find('a')
                     if index == 1:
                         if parts_index == 2:
-                            parts_fc = str(td.text).strip()
+                            parts_fc = str(td.text).strip().replace('\"',' ')
                         else:
                             if a:
-                                parts_fc = str(a.text).strip()
+                                parts_fc = str(a.text).strip().replace('\"',' ')
                     elif index == 2:
                         if parts_index == 2:
-                            parts_pn = str(td.text).strip()
+                            parts_pn = str(td.text).strip().replace('\"',' ')
                         else:
                             if a:
-                                parts_pn = str(a.text).strip()
+                                parts_pn = str(a.text).strip().replace('\"',' ')
                                 parts_url = a['href']
                     else:
-                        parts_desc = str(td.text).strip()
+                        parts_desc = str(td.text).strip().replace('\"',' ')
                     index += 1
-                print('-------------------------------------------------------------------------')
+                # print('-------------------------------------------------------------------------')
                 parts_sql = '''insert into qxf_kfparts(machine_id,parts_name,parts_fc,parts_pn,parts_desc,parts_url) values(%d,"%s","%s","%s","%s","%s")''' % (
                 machine_id, parts_name, parts_fc, parts_pn, parts_desc, parts_url)
-                print(parts_sql)
+                # print(parts_sql)
+                result2 = self.dataManager.op_sql(parts_sql)
+                if result2:
+                    print('parts-true' + str(machine_id))
+                else:
+                    print('-------------------------------------------------------------------------')
+                    print(parts_sql)
             parts_index += 1
 
         # self.dataManager.op_sql(sql)
@@ -137,7 +157,12 @@ machines = info.dataManager.select_all('select * from qxf_kfmachine')
 for machine in machines:
     url = 'http://www.gpos.cn' + machine['machine_url']
     machine_id =  machine['id']
-    print(url)
-    print(machine_id)
+    if machine_id < 732:
+        continue
+    # print(url)
+    # print(machine_id)
     info.operationGoods(url,machine_id)
-    # break
+
+
+#289,731没有备件信息
+
