@@ -33,23 +33,25 @@ class Operation():
 
 info = Operation()
 
-
-partses = info.dataManager.select_all("select * from qxf_kfpartsmachine")
+partses = info.dataManager.select_all("select * from qxf_kfpartsmachine WHERE machine_id < 2")
+print(len(partses))
 for parts in partses:
-    machines = info.dataManager.select_all("select * from qxf_kfmachine WHERE machine_url='%s'"%(parts['machine_url']))
-    id_arr = []
-    for machine in machines:
-        id_arr.append(str(machine['machine_id']))
-    ids = ','.join(id_arr)
-    sql = '''UPDATE qxf_kfpartsmachine SET machine_id = %s WHERE id = %d''' % (ids, parts['id'])
-    # print(sql)
-    result = info.dataManager.op_sql(sql)
-    print(result)
-    print('------------------')
+    print(parts['machine_id'])
 
 
 
-
+# partses = info.dataManager.select_all("select * from qxf_kfpartsmachine")
+# for parts in partses:
+#     machines = info.dataManager.select_all("select * from qxf_kfmachine WHERE machine_url='%s'"%(parts['machine_url']))
+#     id_arr = []
+#     for machine in machines:
+#         id_arr.append(str(machine['machine_id']))
+#     ids = ','.join(id_arr)
+#     sql = '''UPDATE qxf_kfpartsmachine SET machine_id = %s WHERE id = %d''' % (ids, parts['id'])
+#     # print(sql)
+#     result = info.dataManager.op_sql(sql)
+#     print(result)
+#     print('------------------')
 
 
 
