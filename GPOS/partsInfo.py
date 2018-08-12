@@ -106,7 +106,7 @@ class PartsInfo():
 
 
 info = PartsInfo()
-partses = info.dataManager.select_all('select * from qxf_kftemp where parts_id > 90083')
+partses = info.dataManager.select_all('select * from qxf_kftemp where parts_id > 100583 AND parts_id < 100801')
 for parts in partses:
     url = parts['parts_url']
     parts_id =  parts['parts_id']
@@ -114,7 +114,7 @@ for parts in partses:
     # print(parts_id)
     print(url)
 
-    info.operationGoods(url,parts_id)
+    # info.operationGoods(url,parts_id)
 
 
 
