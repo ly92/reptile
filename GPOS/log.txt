@@ -1,0 +1,21 @@
+2018-08-13 13:23:56,026 DatabaseManager.py[line:93] ERROR (1146, "Table 'nevergu.qxf_kftemp' doesn't exist")
+Traceback (most recent call last):
+  File "/Users/ly/Desktop/python/projectpy3/reptile/GPOS/DatabaseManager.py", line 83, in select_all
+    self.cur.execute(condition)
+  File "/Users/ly/.virtualenvs/reptile/lib/python3.6/site-packages/pymysql/cursors.py", line 170, in execute
+    result = self._query(query)
+  File "/Users/ly/.virtualenvs/reptile/lib/python3.6/site-packages/pymysql/cursors.py", line 328, in _query
+    conn.query(q)
+  File "/Users/ly/.virtualenvs/reptile/lib/python3.6/site-packages/pymysql/connections.py", line 516, in query
+    self._affected_rows = self._read_query_result(unbuffered=unbuffered)
+  File "/Users/ly/.virtualenvs/reptile/lib/python3.6/site-packages/pymysql/connections.py", line 727, in _read_query_result
+    result.read()
+  File "/Users/ly/.virtualenvs/reptile/lib/python3.6/site-packages/pymysql/connections.py", line 1066, in read
+    first_packet = self.connection._read_packet()
+  File "/Users/ly/.virtualenvs/reptile/lib/python3.6/site-packages/pymysql/connections.py", line 683, in _read_packet
+    packet.check_error()
+  File "/Users/ly/.virtualenvs/reptile/lib/python3.6/site-packages/pymysql/protocol.py", line 220, in check_error
+    err.raise_mysql_exception(self._data)
+  File "/Users/ly/.virtualenvs/reptile/lib/python3.6/site-packages/pymysql/err.py", line 109, in raise_mysql_exception
+    raise errorclass(errno, errval)
+pymysql.err.ProgrammingError: (1146, "Table 'nevergu.qxf_kftemp' doesn't exist")

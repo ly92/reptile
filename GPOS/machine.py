@@ -40,7 +40,7 @@ class Machine():
             machine_name = str(a.text).strip()
             machine_url = a['href']
             print('-------------------------------------------------------------------------')
-            sql = '''insert into qxf_kfmachine(machine_name,machine_url,brand_id,type_id) values("%s","%s",%d,%d)''' % (machine_name,machine_url,brand_id,type_id)
+            sql = '''insert into qxf_kfmachine(machine_name,machine_url,brand_id,type_id,machine_id) values("%s","%s",%d,%d,0)''' % (machine_name,machine_url,brand_id,type_id)
             # print(sql)
             self.COUNT += 1
             print(self.COUNT)
@@ -49,7 +49,8 @@ class Machine():
 
 machine = Machine()
 
-filePath = '/Users/ly/Desktop/123213/1-hp.html;/Users/ly/Desktop/123213/1-sun.html;/Users/ly/Desktop/123213/2-hp.html;/Users/ly/Desktop/123213/2-ibm.html;/Users/ly/Desktop/123213/2-sun.html;/Users/ly/Desktop/123213/3-hp.html;/Users/ly/Desktop/123213/3-ibm.html;/Users/ly/Desktop/123213/3-sun.html;/Users/ly/Desktop/123213/4-hp.html;/Users/ly/Desktop/123213/4-ibm.html;/Users/ly/Desktop/123213/4-sun.html;/Users/ly/Desktop/123213/5-ibm.html;/Users/ly/Desktop/123213/5-sun.html;/Users/ly/Desktop/123213/6-hp.html;/Users/ly/Desktop/123213/6-ibm.html;/Users/ly/Desktop/123213/7-hp.html;/Users/ly/Desktop/123213/7-ibm.html;/Users/ly/Desktop/123213/7-sun.html'
+# filePath = '/Users/ly/Desktop/123213/1-hp.html;/Users/ly/Desktop/123213/1-sun.html;/Users/ly/Desktop/123213/2-hp.html;/Users/ly/Desktop/123213/2-ibm.html;/Users/ly/Desktop/123213/2-sun.html;/Users/ly/Desktop/123213/3-hp.html;/Users/ly/Desktop/123213/3-ibm.html;/Users/ly/Desktop/123213/3-sun.html;/Users/ly/Desktop/123213/4-hp.html;/Users/ly/Desktop/123213/4-ibm.html;/Users/ly/Desktop/123213/4-sun.html;/Users/ly/Desktop/123213/5-ibm.html;/Users/ly/Desktop/123213/5-sun.html;/Users/ly/Desktop/123213/6-hp.html;/Users/ly/Desktop/123213/6-ibm.html;/Users/ly/Desktop/123213/7-hp.html;/Users/ly/Desktop/123213/7-ibm.html;/Users/ly/Desktop/123213/7-sun.html'
+filePath = '/Users/ly/Desktop/123213/1-ibm.html'
 
 def read_txt(dir):
     with open(dir,'r') as f:
@@ -67,6 +68,7 @@ for url in urlPaths:
     indexs = re.split('[-]',aaa)
     type_id = indexs[0]
     brand_id = indexs[1]
+    # print(str(type_id) + '-----' + str(brand_id))
     machine.operationGoods(sss, int(brand_id), int(type_id))
 
 #

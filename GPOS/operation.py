@@ -33,11 +33,16 @@ class Operation():
 
 info = Operation()
 
-partses = info.dataManager.select_all("select * from qxf_kfpartsmachine WHERE machine_id < 2")
-print(len(partses))
-for parts in partses:
-    print(parts['machine_id'])
+# partses = info.dataManager.select_all("select * from qxf_kfpartsmachine WHERE machine_id < 2")
+# print(len(partses))
+# for parts in partses:
+#     print(parts['machine_id'])
 
+partses = info.dataManager.select_all("select * from qxf_kfparts WHERE id>101086")
+for parts in partses:
+    sql = '''UPDATE qxf_kfparts SET parts_id = %d WHERE id = %d''' % (parts['id'],parts['id'])
+    result = info.dataManager.op_sql(sql)
+    print(result)
 
 
 # partses = info.dataManager.select_all("select * from qxf_kfpartsmachine")

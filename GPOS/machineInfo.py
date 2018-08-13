@@ -137,7 +137,7 @@ class MachineInfo():
                         parts_desc = str(td.text).strip().replace('\"',' ')
                     index += 1
                 # print('-------------------------------------------------------------------------')
-                parts_sql = '''insert into qxf_kfparts(machine_id,parts_name,parts_fc,parts_pn,parts_desc,parts_url) values(%d,"%s","%s","%s","%s","%s")''' % (
+                parts_sql = '''insert into qxf_kfparts(machine_id,parts_name,parts_fc,parts_pn,parts_desc,parts_url,parts_id) values(%d,"%s","%s","%s","%s","%s",0)''' % (
                 machine_id, parts_name, parts_fc, parts_pn, parts_desc, parts_url)
                 # print(parts_sql)
                 result2 = self.dataManager.op_sql(parts_sql)
@@ -153,15 +153,13 @@ class MachineInfo():
 
 
 info = MachineInfo()
-machines = info.dataManager.select_all('select * from qxf_kfmachine')
+machines = info.dataManager.select_all('select * from qxf_kfmachine WHERE id>1045')
 for machine in machines:
     url = 'http://www.gpos.cn' + machine['machine_url']
     machine_id =  machine['id']
-    if machine_id < 732:
-        continue
-    # print(url)
+    print(url)
     # print(machine_id)
-    info.operationGoods(url,machine_id)
+    # info.operationGoods(url,machine_id)
 
 
 #289,731没有备件信息
