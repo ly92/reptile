@@ -80,7 +80,7 @@ class PartsInfo():
                         machine_url = ''
                         machine_name = str(a.text).strip()
                         machine_url = a['href']
-                        pM_sql = '''insert into qxf_kfpartsmachine(parts_id,machine_name,machine_url,machine_id) values(%d,"%s","%s",0)''' % (
+                        pM_sql = '''insert into qxf_kfpartsmachine(parts_id,machine_name,machine_url) values(%d,"%s","%s")''' % (
                         parts_id, machine_name, machine_url)
                         result1 = self.dataManager.op_sql(pM_sql)
                         if result1:
@@ -106,7 +106,7 @@ class PartsInfo():
 
 
 info = PartsInfo()
-partses = info.dataManager.select_all('select * from qxf_kfparts where parts_id > 101493')
+partses = info.dataManager.select_all('select * from qxf_kftemp where parts_id > 110390')
 for parts in partses:
     url = 'http://www.gpos.cn' + parts['parts_url']
     parts_id =  parts['parts_id']
