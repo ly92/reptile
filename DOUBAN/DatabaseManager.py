@@ -125,6 +125,8 @@ class OperationDbInterface(object):
 
 
 
+
+
 # test = OperationDbInterface() # 实例化类
 # # result_1 = test.select_one('select*from D_COM_RG_PERN') # 查询一条数据
 # # print(result_1)

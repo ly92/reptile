@@ -33,6 +33,18 @@ class Operation():
 
 info = Operation()
 
+
+# sql1 = '''insert into qxf_kfmachinetype(type_id,type_name) values(%d,"%s")''' % (1,"小型机")
+# sql2 = '''insert into qxf_kfmachinetype(type_id,type_name) values(%d,"%s")''' % (2,"PC服务器")
+# sql3 = '''insert into qxf_kfmachinetype(type_id,type_name) values(%d,"%s")''' % (3,"存储整机")
+# sql4 = '''insert into qxf_kfmachinetype(type_id,type_name) values(%d,"%s")''' % (4,"磁带库")
+# sql5 = '''insert into qxf_kfmachinetype(type_id,type_name) values(%d,"%s")''' % (5,"NAS")
+# sql6 = '''insert into qxf_kfmachinetype(type_id,type_name) values(%d,"%s")''' % (6,"SAN")
+# sql7 = '''insert into qxf_kfmachinetype(type_id,type_name) values(%d,"%s")''' % (7,"刀片服务器")
+# for sql in [sql1,sql2,sql3,sql4,sql5,sql6,sql7]:
+#     info.dataManager.op_sql(sql)
+
+
 # partses = info.dataManager.select_all("select * from qxf_kfpartsmachine WHERE machine_id < 2")
 # print(len(partses))
 # for parts in partses:

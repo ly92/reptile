@@ -100,7 +100,8 @@ class MachineInfo():
                 print('-------------------------------------------------------------------------')
                 print(machine_sql)
                 print('false' + str(machine_id))
-
+        return
+        print('-----00000------00000-----00000-----')
         parts_table = tables[1]
         parts_tbody = BeautifulSoup(str(parts_table), 'lxml').find('tbody')
         parts_trs = BeautifulSoup(str(parts_tbody), 'lxml').find_all('tr')
@@ -140,7 +141,7 @@ class MachineInfo():
                 parts_sql = '''insert into qxf_kfparts(machine_id,parts_name,parts_fc,parts_pn,parts_desc,parts_url,parts_id) values(%d,"%s","%s","%s","%s","%s",0)''' % (
                 machine_id, parts_name, parts_fc, parts_pn, parts_desc, parts_url)
                 # print(parts_sql)
-                result2 = self.dataManager.op_sql(parts_sql)
+                # result2 = self.dataManager.op_sql(parts_sql)
                 if result2:
                     print('parts-true' + str(machine_id))
                 else:
@@ -153,14 +154,16 @@ class MachineInfo():
 
 
 info = MachineInfo()
-machines = info.dataManager.select_all('select * from qxf_kfmachine WHERE id>1045')
-for machine in machines:
-    url = 'http://www.gpos.cn' + machine['machine_url']
-    machine_id =  machine['id']
-    print(url)
-    # print(machine_id)
-    # info.operationGoods(url,machine_id)
 
+id_list = []
+for id in id_list:
+    sql = 'select * from qxf_kfmachine WHERE machine_id=%d'%(id)
+    machines = info.dataManager.select_all(sql)
+    for machine in machines:
+        url = 'http://www.gpos.cn' + machine['machine_url']
+        # machine_id =  machine['id']
+        print(url)
+        # print(machine_id)
+        # info.operationGoods(url,id)
 
-#289,731没有备件信息
 
